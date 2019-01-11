@@ -1,0 +1,2 @@
+module EuExitDashHelper
+end

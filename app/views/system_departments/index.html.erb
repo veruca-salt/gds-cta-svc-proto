@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>System Departments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>System</th>
+      <th>Department</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @system_departments.each do |system_department| %>
+      <tr>
+        <td><%= system_department.system.acronymn %> - <%= system_department.system.name %></td>
+        <td><%= system_department.department.name %></td>
+        <td><%= link_to 'Show', system_department %></td>
+        <td><%= link_to 'Edit', edit_system_department_path(system_department) %></td>
+        <td><%= link_to 'Destroy', system_department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New System Department', new_system_department_path %>
+<br>
+<%= link_to 'Return to dashboard', root_path %>

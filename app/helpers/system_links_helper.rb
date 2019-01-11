@@ -1,0 +1,2 @@
+module SystemLinksHelper
+end

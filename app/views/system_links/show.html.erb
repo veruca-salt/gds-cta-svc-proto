@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>System a:</strong>
+  <%= @system_link.system_a.acronymn %>
+</p>
+
+<p>
+  <strong>System b:</strong>
+  <%= @system_link.system_b.acronymn %>
+</p>
+
+<p>
+  <strong>Protocol:</strong>
+  <%= @system_link.protocol %>
+</p>
+
+<p style="display:none">
+  <strong>Weight:</strong>
+  <%= @system_link.weight %>
+</p>
+
+<%= link_to 'Edit', edit_system_link_path(@system_link) %> |
+<%= link_to 'Back', system_links_path %>

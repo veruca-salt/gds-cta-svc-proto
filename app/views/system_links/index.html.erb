@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>System Links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>System a</th>
+      <th>System b</th>
+      <th>Protocol</th>
+      <th style="display:none">Weight</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @system_links.each do |system_link| %>
+      <% next if system_link.weight > 1 %>
+      <tr>
+        <td><%= system_link.system_a.acronymn %></td>
+        <td><%= system_link.system_b.acronymn %></td>
+        <td><%= system_link.protocol %></td>
+        <td style="display:none"><%= system_link.weight %></td>
+        <td><%= link_to 'Show', system_link %></td>
+        <td><%= link_to 'Edit', edit_system_link_path(system_link) %></td>
+        <td><%= link_to 'Destroy', system_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New System Link', new_system_link_path %>
+<br>
+<%= link_to 'Return to dashboard', root_path %>

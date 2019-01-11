@@ -1,0 +1,37 @@
+<%= form_with(model: system_link, local: true) do |form| %>
+  <% if system_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(system_link.errors.count, "error") %> prohibited this system_link from being saved:</h2>
+
+      <ul>
+      <% system_link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :system_a_id %>
+    <%= form.collection_select(:system_a_id, System.all, :id, :acronymn) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :system_b_id %>
+    <%= form.collection_select(:system_b_id, System.all, :id, :acronymn) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :protocol %>
+    <%= form.collection_select(:protocol, Protocol.all, :name, :name) %>
+  </div>
+
+  <div class="field" style="display:none">
+    <%= form.label :weight %>
+    <%= form.number_field :weight, disabled: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

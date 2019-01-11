@@ -1,0 +1,69 @@
+
+
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      	<h1 class="govuk-heading-xl">Dashboard</h1>
+		<h2>v0.02</h2>
+		<p>
+		<%= link_to 'EU Exit Dashboard', controller: 'eu_exit_dash' %>
+		</p>
+
+
+		<hr>
+
+		<p>
+		<%= link_to 'Departments', controller: 'departments' %>
+		<br>
+		<%= link_to "Systems", controller: 'systems' %>
+		<br>
+		<%= link_to "Protocols", controller: 'protocols' %>
+		<br>
+		<%= link_to "Agencies", controller: 'agencies' %>
+		<br>
+		<%= link_to "Programs", controller: 'programs' %>
+		</p>
+
+		<hr>
+
+		<%= link_to "Services", controller: 'services' %>
+
+		<hr>
+
+		<p>
+		<%= link_to "System-Department Links", controller: 'system_departments' %>
+		<br>
+		<%= link_to "System-System Links", controller: 'system_links' %>
+		<br>
+		</p>
+	</div>
+
+
+	<div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-m">Top 10 System List</h3>    
+
+        <hr><br> 
+        
+		<table>
+		  <thead>
+		    <tr>
+		      <th>Acronymn</th>
+		      <th>Name</th>
+		      <th colspan="2"></th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @top_ten_results.each do |system| %>
+		      <tr>
+		        <td><%= system.acronymn %></td>
+		        <td><%= system.name %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+
+		<br><hr><br>
+	<%= button_to "Refresh", '/refresh', :class => "govuk-button", :method => :post %>
+
+    </div>
+</div>

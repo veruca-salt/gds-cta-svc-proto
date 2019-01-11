@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Systems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Acronymn</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Importance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @systems.each do |system| %>
+      <tr>
+        <td><%= system.acronymn %></td>
+        <td><%= system.name %></td>
+        <td><%= system.description %></td>
+        <td><%= system.importance %></td>
+        <td><%= link_to 'Show', system %></td>
+        <td><%= link_to 'Edit', edit_system_path(system) %></td>
+        <td><%= link_to 'Destroy', system, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New System', new_system_path %>
+<br>
+<%= link_to 'Return to dashboard', root_path %>

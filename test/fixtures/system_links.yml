@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  system_a_id: 1
+  system_b_id: 2
+  protocol: Unknown
+  weight: 1
+
+two:
+  system_a_id: 1
+  system_b_id: 2
+  protocol: Unknown
+  weight: 1

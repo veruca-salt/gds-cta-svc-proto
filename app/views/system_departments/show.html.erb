@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>System:</strong>
+  <%= @system_department.system.acronymn %> - <%= @system_department.system.name %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @system_department.department.name %>
+</p>
+
+<%= link_to 'Edit', edit_system_department_path(@system_department) %> |
+<%= link_to 'Back', system_departments_path %>

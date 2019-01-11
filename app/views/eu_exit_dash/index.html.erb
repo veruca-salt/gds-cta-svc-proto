@@ -1,0 +1,54 @@
+<h1 class="govuk-heading-xl">EU Exit Dashboard</h1>
+<h2>v0.01</h2>
+
+
+
+<%= form_with url: "/get_systems_by_dept", method: "get", remote: true do |form| %>
+  <div class="field">
+     <%= form.label :department_id, :class => "govuk-label" %>
+     <%= form.collection_select(:department_id, Department.order(:name), :id, :name, {prompt: "Select a department"}, {class: "govuk-select"}) %>
+  </div>
+
+
+
+ <div class="field">
+    <%= form.label :system_id, :class => "govuk-label" %>
+    <%= form.collection_select(:system_id, SystemDepartment.order(:system_id), :system_id, :id, {prompt: "Select a System"}, {class: "govuk-select"}) %>
+  </div>
+
+
+<button type="submit" class="govuk-button">
+  Terminate System
+</button>
+
+
+<% end %>
+
+<hr>
+
+<div>
+
+<table class="govuk-table">
+	<thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header">Linked Systems</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <% @system_links.each do |system_link| %>
+      <% next if system_link.weight > 1 %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header"><%= system_link.system_b.acronymn %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+<br>
+<%= link_to 'Return to dashboard', root_path %>

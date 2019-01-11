@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acronymn: MyString
+  name: MyString
+  description: MyString
+  importance: 1
+
+two:
+  acronymn: MyString
+  name: MyString
+  description: MyString
+  importance: 1
