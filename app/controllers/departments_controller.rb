@@ -1,4 +1,5 @@
 class DepartmentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
   # GET /departments
@@ -71,4 +72,8 @@ class DepartmentsController < ApplicationController
     def department_params
       params.require(:department).permit(:name, :description)
     end
+
+    def authenticate_user!
+   redirect_to :login if current_user.nil?
+  end
 end

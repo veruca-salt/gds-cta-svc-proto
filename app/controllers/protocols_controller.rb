@@ -1,4 +1,5 @@
 class ProtocolsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_protocol, only: [:show, :edit, :update, :destroy]
 
   # GET /protocols
@@ -71,4 +72,8 @@ class ProtocolsController < ApplicationController
     def protocol_params
       params.require(:protocol).permit(:name)
     end
+
+    def authenticate_user!
+   redirect_to :login if current_user.nil?
+  end
 end

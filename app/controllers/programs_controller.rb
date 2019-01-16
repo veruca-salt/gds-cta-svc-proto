@@ -1,4 +1,5 @@
 class ProgramsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_program, only: [:show, :edit, :update, :destroy]
 
   # GET /programs
@@ -71,4 +72,8 @@ class ProgramsController < ApplicationController
     def program_params
       params.require(:program).permit(:name)
     end
+
+    def authenticate_user!
+   redirect_to :login if current_user.nil?
+  end
 end

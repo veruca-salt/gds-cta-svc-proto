@@ -1,4 +1,5 @@
 class SystemDepartmentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_system_department, only: [:show, :edit, :update, :destroy]
 
   # GET /system_departments
@@ -71,4 +72,8 @@ class SystemDepartmentsController < ApplicationController
     def system_department_params
       params.require(:system_department).permit(:system_id, :department_id)
     end
+
+    def authenticate_user!
+   redirect_to :login if current_user.nil?
+  end
 end

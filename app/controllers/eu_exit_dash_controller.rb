@@ -1,4 +1,5 @@
 class EuExitDashController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @departments = Department.all
@@ -19,6 +20,11 @@ class EuExitDashController < ApplicationController
     respond_to do |format|
       format.json { render :json => system_list }
     end
+  end
+
+  private
+  def authenticate_user!
+   redirect_to :login if current_user.nil?
   end
 
 end

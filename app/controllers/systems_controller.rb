@@ -1,4 +1,5 @@
 class SystemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_system, only: [:show, :edit, :update, :destroy]
 
   # GET /systems
@@ -71,4 +72,8 @@ class SystemsController < ApplicationController
     def system_params
       params.require(:system).permit(:acronymn, :name, :description, :importance)
     end
+
+  def authenticate_user!
+   redirect_to :login if current_user.nil?
+  end
 end

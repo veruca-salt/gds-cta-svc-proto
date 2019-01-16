@@ -1,4 +1,5 @@
 class SystemLinksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_system_link, only: [:show, :edit, :update, :destroy]
 
 
@@ -72,4 +73,8 @@ class SystemLinksController < ApplicationController
     def system_link_params
       params.require(:system_link).permit(:system_a_id, :system_b_id, :protocol, :weight)
     end
+
+    def authenticate_user!
+   redirect_to :login if current_user.nil?
+  end
 end

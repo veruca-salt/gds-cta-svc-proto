@@ -1,4 +1,5 @@
 class AgenciesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_agency, only: [:show, :edit, :update, :destroy]
 
   # GET /agencies
@@ -71,4 +72,8 @@ class AgenciesController < ApplicationController
     def agency_params
       params.require(:agency).permit(:name)
     end
+
+  def authenticate_user!
+   redirect_to :login if current_user.nil?
+  end
 end

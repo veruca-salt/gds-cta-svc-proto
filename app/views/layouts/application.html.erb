@@ -13,6 +13,11 @@
       <link rel="apple-touch-icon" sizes="152x152" href="https://design-system.service.gov.uk/assets/images/govuk-apple-touch-icon-152x152.png">
       <link rel="apple-touch-icon" href="/https://design-system.service.gov.ukassets/images/govuk-apple-touch-icon.png">
 
+      <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+
   <meta name="robots" content="noindex, nofollow">
   <!--[if !IE 8]><!-->
     <link href="https://design-system.service.gov.uk/stylesheets/main-9a7f5765d2a7cb456c6298750b33db14.css" rel="stylesheet" media="all" />
@@ -22,19 +27,12 @@
     <script src="/javascripts/head-ie8-3bdeff766c8e82bdaeaf6f5accfc18e3.js"></script>
   <![endif]-->
   <script src="https://design-system.service.gov.uk/javascripts/vendor/modernizr.js"></script>
-  <!-- required for google sign in -->
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-    
-    
-    <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <!-- header -->
   <body>
      <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
@@ -93,18 +91,40 @@
       </div>
     </header>
 
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+      alpha
+    </strong>
+    <span class="govuk-phase-banner__text">
+          This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+        </span>
+      </p>
+    </div>
 
-
+    <!-- body -->
      <div class="govuk-width-container">
         <main class="govuk-main-wrapper " id="main-content" role="main">
           <% if flash[:notice] %><%=flash[:notice]%><% end %>
+
+            <% if ! current_user %>
+              <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+            <% end %>
+          <p>
+          <% if current_user %>
+            Welcome back <strong><%= current_user.name %></strong>!
+            <%= link_to "Sign out", logout_path, id: "logout" %>
+          <% end %> 
+          </p>
+
+
+
           <%= yield %>
 
         </main>
     </div>
 
 
-
+    <!-- footer -->
     <footer class="govuk-footer " role="contentinfo">
       <div class="govuk-width-container ">
         <div class="govuk-footer__meta">

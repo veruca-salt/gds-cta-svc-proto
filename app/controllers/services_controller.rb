@@ -1,4 +1,5 @@
 class ServicesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
@@ -71,4 +72,8 @@ class ServicesController < ApplicationController
     def service_params
       params.require(:service).permit(:name, :department_id, :program_id, :agency_id)
     end
+
+    def authenticate_user!
+   redirect_to :login if current_user.nil?
+  end
 end
