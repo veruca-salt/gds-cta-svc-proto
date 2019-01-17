@@ -3,13 +3,8 @@
 <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-      	<h1 class="govuk-heading-xl">Dashboard v02</h1>
-		<p>
-		<%= link_to 'EU Exit Dashboard', controller: 'eu_exit_dash' %>
-		</p>
+      	<h1 class="govuk-heading-xl">Departmental Systems Dashboard v03</h1>
 
-
-		<hr>
 
 		<p>
 		<%= button_to 'View/Update Departments', 'departments', :class => 'govuk-button', :method => :get %>
@@ -23,26 +18,31 @@
 
 		
 		<br>
-		<%= link_to "List Agencies", controller: 'agencies' %>
-		<br>
-		<%= link_to "List Programs", controller: 'programs' %>
-		</p>
 
-		<p>
-		<%= link_to "List System-Department Links", controller: 'system_departments' %>
-		<br>
-		<%= link_to "List System-System Links", controller: 'system_links' %>
-		<br>
-		<%= link_to "List Protocols", controller: 'protocols' %>
-
-		</p>
+		<ul class="govuk-list">
+			<li>
+				<%= link_to "List Agencies", controller: 'agencies', :class => 'govuk-link' %>
+			</li>
+			<li>
+				<%= link_to "List Programs", controller: 'programs', :class => 'govuk-link' %>
+			</li>
+			<li>
+				<%= link_to "List System-Department Links", controller: 'system_departments', :class => 'govuk-link' %>
+			</li>
+			<li>
+				<%= link_to "List System-System Links", controller: 'system_links', :class => 'govuk-link' %>
+			</li>
+			<li>
+				<%= link_to "List Protocols", controller: 'protocols', :class => 'govuk-link' %>
+			</li>
+		</ul>
 	</div>
 
 
 	<div class="govuk-grid-column-one-third">
         <h3 class="govuk-heading-m">Top 10 System List</h3>    
 
-        <hr><br> 
+        <br> 
         
 		<table>
 		  <thead>
@@ -63,8 +63,12 @@
 		  </tbody>
 		</table>
 
-		<br><hr><br>
+		<br><br>
 	<%= button_to "Refresh", '/refresh', :class => "govuk-button", :method => :post %>
 
     </div>
+</div>
+
+
+
 </div>
