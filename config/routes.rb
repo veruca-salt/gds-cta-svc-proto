@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'logout', to: 'sessions#destroy', as: 'logout'
-  get 'dashboard/index', as: 'home'
   get 'login/new', as: 'login'
 
   # route to get systems by department

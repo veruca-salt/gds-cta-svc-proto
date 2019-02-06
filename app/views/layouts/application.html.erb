@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0b0c0c" /> 
 
+    <!-- add govuk frontend from dist instead of npm -->
+    <!--[if !IE 8]><!-->
+    <link rel="stylesheet" href="stylesheets/govuk-frontend-2.6.0.min.css">
+     <!--<![endif]-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" href="stylesheets/govuk-frontend-ie8-2.6.0.min.css">
+     <![endif]-->
+
+
       <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="https://design-system.service.gov.uk/assets/images/favicon.ico" type="image/x-icon" />
       <link rel="mask-icon" href="https://design-system.service.gov.uk/assets/images/govuk-mask-icon.svg" color="#0b0c0c"> 
       <link rel="apple-touch-icon" sizes="180x180" href="https://design-system.service.gov.uk/assets/images/govuk-apple-touch-icon-180x180.png">
@@ -34,6 +43,11 @@
 
   <!-- header -->
   <body>
+     <!-- add govuk frontend from dist instead of npm -->
+    <script src="path-to-assets/govuk-frontend/all.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
+
+
      <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
       <a href="#main-content" class="govuk-skip-link">Skip to main content</a>

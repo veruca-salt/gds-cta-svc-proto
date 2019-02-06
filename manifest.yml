@@ -1,0 +1,12 @@
+---
+applications:
+- name: cta-system-analytics
+  memory: 256M
+  instances: 1
+  buildpack: ruby_buildpack
+  services:
+   - nssu-ghahnb
+  env:
+    GOOGLE_AUTH_CLIENT: ((auth_client))
+    GOOGLE_AUTH_SECRET: ((auth_secret))
+    DOMAIN:	digital.cabinet-office.gov.uk

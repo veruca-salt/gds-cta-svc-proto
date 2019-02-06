@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
 	SystemLink.set_importance!
 
 	flash[:notice] = 'System links regenerated' 
-	redirect_to home_path
+	redirect_to root_path
   end
 
   private

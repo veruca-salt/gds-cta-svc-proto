@@ -12,8 +12,7 @@
  *
  *= require_tree .
  *= require_self
- */
- $govuk-global-styles: true;
-@import "/node_modules/govuk-frontend/all";
+ *
+*/
 
 // commented out margin in scaffolds.scss
