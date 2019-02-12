@@ -5,7 +5,7 @@
 
 <%= form_with url: "/get_systems_by_dept", method: "get", remote: true do |form| %>
   <div class="field">
-     <%= form.label :department_id, :class => "govuk-label" %>
+     <%= form.label :department_id, class: "govuk-label" %>
      <%= form.collection_select(:department_id, Department.order(:name), :id, :name, {prompt: "Select a department"}, {class: "govuk-select"}) %>
   </div>
 
@@ -17,9 +17,7 @@
   </div>
 
 
-<button type="submit" class="govuk-button">
-  Impacted Systems
-</button>
+<%= button_to "Impacted Systems", '/impact', class: 'govuk-button', :method => :post %>
 
 
 <% end %>

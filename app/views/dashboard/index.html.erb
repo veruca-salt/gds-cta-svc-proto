@@ -7,11 +7,11 @@
 
 
 		<p>
-		<%= button_to 'View/Update Departments', 'departments', :class => 'govuk-button', :method => :get %>
+		<%= link_to 'View/Update Departments', 'departments', class: 'govuk-button' %>
 		<br>
-		<%= button_to "View/Update Systems", 'systems', :class => 'govuk-button', :method => :get %>
+		<%= link_to "View/Update Systems", 'systems', class: 'govuk-button' %>
 		<br>
-		<%= button_to "View/Update Services", 'services', :class => 'govuk-button', :method => :get %>
+		<%= link_to "View/Update Services", 'services', class: 'govuk-button' %>
 
 
 
@@ -21,19 +21,19 @@
 
 		<ul class="govuk-list">
 			<li>
-				<%= link_to "List Agencies", controller: 'agencies', :class => 'govuk-link' %>
+				<%= link_to "List Agencies", controller: 'agencies', class: 'govuk-link' %>
 			</li>
 			<li>
-				<%= link_to "List Programs", controller: 'programs', :class => 'govuk-link' %>
+				<%= link_to "List Programs", controller: 'programs', class: 'govuk-link' %>
 			</li>
 			<li>
-				<%= link_to "List System-Department Links", controller: 'system_departments', :class => 'govuk-link' %>
+				<%= link_to "List System-Department Links", controller: 'system_departments', class: 'govuk-link' %>
 			</li>
 			<li>
-				<%= link_to "List System-System Links", controller: 'system_links', :class => 'govuk-link' %>
+				<%= link_to "List System-System Links", controller: 'system_links', class: 'govuk-link' %>
 			</li>
 			<li>
-				<%= link_to "List Protocols", controller: 'protocols', :class => 'govuk-link' %>
+				<%= link_to "List Protocols", controller: 'protocols', class: 'govuk-link' %>
 			</li>
 		</ul>
 	</div>
@@ -64,7 +64,7 @@
 		</table>
 
 		<br><br>
-	<%= button_to "Refresh", '/refresh', :class => "govuk-button", :method => :post %>
+	<%= button_to "Refresh", '/refresh', class: 'govuk-button', :method => :post %>
 
     </div>
 </div>
