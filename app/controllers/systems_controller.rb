@@ -55,6 +55,11 @@ class SystemsController < ApplicationController
   # DELETE /systems/1
   # DELETE /systems/1.json
   def destroy
+    # If any system department links exist delete them
+    @system_departments = SystemDepartment.where("system_id = ?", @system)&.destroy_all
+    # If any system to system links exist delete them
+    @system_links = SystemLink.where("system_a_id = ? OR system_b_id = ?", @system, @system)&.destroy_all
+
     @system.destroy
     respond_to do |format|
       format.html { redirect_to systems_url, notice: 'System was successfully destroyed.' }

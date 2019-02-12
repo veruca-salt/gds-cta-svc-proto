@@ -1,7 +1,7 @@
 class System < ApplicationRecord
 	has_many :departments
-	has_many :system_links 
-	has_many :department_links
+	has_many :system_links
+	has_many :system_departments
 	validates :name, presence: true,
 							length: { minimum: 2 }
 	validates :acronymn, presence: true,

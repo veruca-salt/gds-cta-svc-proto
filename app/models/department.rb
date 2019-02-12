@@ -1,6 +1,7 @@
 class Department < ApplicationRecord
 	has_many :services 
 	has_many :systems
+	has_many :system_departments
 	validates :name, presence: true,
 							length: { minimum: 2 },
 							uniqueness: {
@@ -10,4 +11,7 @@ class Department < ApplicationRecord
 							}
 	validates :description, presence: true,
 							length: { minimum: 2 }
+
+
+							
 end

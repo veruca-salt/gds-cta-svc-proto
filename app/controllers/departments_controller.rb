@@ -55,6 +55,9 @@ class DepartmentsController < ApplicationController
   # DELETE /departments/1
   # DELETE /departments/1.json
   def destroy
+    # if any system department links exist then delete them as well
+    @system_department = SystemDepartment.where("department_id=?", @department)&.destroy_all
+
     @department.destroy
     respond_to do |format|
       format.html { redirect_to departments_url, notice: 'Department was successfully destroyed.' }

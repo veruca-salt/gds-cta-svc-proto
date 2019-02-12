@@ -3,7 +3,7 @@ class SystemLink < ApplicationRecord
 	belongs_to :system_b, :class_name => 'System' 
 	validates :system_a_id, :system_b_id, presence: true
 
-# need validation to stop duplicates -- ?? add_index :system_links, [ :system_a_id, :system_b_id ], :unique => true
+	# validation to stop duplicates -- ?? add_index :system_links, [ :system_a_id, :system_b_id ], :unique => true
 
 	attribute :weight, :integer, default: 1
 	#attr_accessor :system_a, :system_b, :neighbors, :weights
