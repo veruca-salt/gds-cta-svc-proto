@@ -1,5 +1,5 @@
 class Program < ApplicationRecord
-	has_many :services 
+	has_many :services, dependent: :nullify 
 	validates :name, presence: true,
 							length: { minimum: 2 },
 							uniqueness: {

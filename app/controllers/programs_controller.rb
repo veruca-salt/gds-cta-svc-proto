@@ -2,10 +2,12 @@ class ProgramsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_program, only: [:show, :edit, :update, :destroy]
 
+
   # GET /programs
   # GET /programs.json
   def index
     @programs = Program.all
+    @program = Program.new
   end
 
   # GET /programs/1
@@ -22,8 +24,34 @@ class ProgramsController < ApplicationController
   def edit
   end
 
+  # GET /programs/add/:program_name
+  def add
+    program_find_results = Program.where("name = ?", params[:program_name])
+
+    # program exists, just return 
+    if program_find_results.exists?
+      respond_to do |format|
+        format.json { render json: program_find_results }
+      end
+    else
+     # add new program to the db and then return the new program
+     new_program = Program.create(name: params[:program_name])
+       if new_program.save  
+         # Need to select values to return otherwise returns undefined
+         prog_list = []
+         prog_info = new_program.attributes
+         prog_list << prog_info 
+         respond_to do |format|
+            format.json { render json: prog_list }
+         end
+       end
+    end
+  end
+
+
   # POST /programs
   # POST /programs.json
+  # POST /programs.js
   def create
     @program = Program.new(program_params)
 
@@ -62,6 +90,9 @@ class ProgramsController < ApplicationController
     end
   end
 
+  
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_program
@@ -70,7 +101,7 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params.require(:program).permit(:name)
+      params.require(:program).permit(:name, :program_name)
     end
 
     def authenticate_user!

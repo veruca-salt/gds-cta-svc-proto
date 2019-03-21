@@ -18,11 +18,11 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= service.department.description %></td>
-        <td><%= service.program.name %></td>
-        <td><%= service.agency.name %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= service&.program&.name %></td>
+        <td><%= service&.agency&.name %></td>
+        <td><%= link_to 'Show', service, class: 'govuk-link govuk-link--no-visited-state' %></td>
+        <td><%= link_to 'Edit', edit_service_path(service), class: 'govuk-link govuk-link--no-visited-state' %></td>
+        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }, class: 'govuk-link govuk-link--no-visited-state' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,6 +30,6 @@
 
 <br>
 
-<%= link_to 'New Service', new_service_path %>
+<%= link_to 'New Service', new_service_path, class: 'govuk-button' %>
 <br>
-<%= link_to 'Return to dashboard', root_path %>
+<%= link_to 'Return to dashboard', root_path, class: 'govuk-link govuk-link--no-visited-state' %>

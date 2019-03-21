@@ -2,8 +2,21 @@ class SystemLink < ApplicationRecord
 	belongs_to :system_a, :class_name => 'System' 
 	belongs_to :system_b, :class_name => 'System' 
 	validates :system_a_id, :system_b_id, presence: true
+	validate :same_system_validation
+	validate :duplicate_link
 
-	# validation to stop duplicates -- ?? add_index :system_links, [ :system_a_id, :system_b_id ], :unique => true
+	def same_system_validation
+		if self.system_a_id == self.system_b_id
+			errors.add :base, 'System cannot link to itself.'
+		end
+	end
+
+	def duplicate_link
+		duplicate_link = SystemLink.where("system_a_id=? AND system_b_id=?", self.system_a_id, self.system_b_id) 
+		if duplicate_link.exists?
+			errors.add :base, 'System link already exists.'
+		end
+	end
 
 	attribute :weight, :integer, default: 1
 	#attr_accessor :system_a, :system_b, :neighbors, :weights

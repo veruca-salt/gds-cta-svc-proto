@@ -6,6 +6,9 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = Service.all
+    @programs = Program.all
+    @agencies = Agency.all
+    @program = Program.new
   end
 
   # GET /services/1
@@ -25,7 +28,8 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-    @service = Service.new(service_params)
+    new_params = service_params.except(:program_name, :agency_name)
+    @service = Service.new(new_params)
 
     respond_to do |format|
       if @service.save
@@ -41,8 +45,10 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
+    new_params = service_params.except(:program_name, :agency_name)
+
     respond_to do |format|
-      if @service.update(service_params)
+      if @service.update(new_params)
         format.html { redirect_to @service, notice: 'Service was successfully updated.' }
         format.json { render :show, status: :ok, location: @service }
       else
@@ -70,7 +76,7 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :department_id, :program_id, :agency_id)
+      params.require(:service).permit(:name, :department_id, :program_id, :agency_id, :program_name, :agency_name)
     end
 
     def authenticate_user!

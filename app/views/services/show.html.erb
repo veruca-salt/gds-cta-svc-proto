@@ -12,12 +12,12 @@
 
 <p>
   <strong>Program:</strong>
-  <%= @service.program.name %>
+  <%= @service&.program&.name %>
 </p>
 
 <p>
   <strong>Agency:</strong>
-  <%= @service.agency.name %>
+  <%= @service&.agency&.name %>
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |

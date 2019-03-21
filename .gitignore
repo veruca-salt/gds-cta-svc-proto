@@ -13,6 +13,9 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore test files
+/test/*
+
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
@@ -28,4 +31,3 @@
 /config/credentials.yml.enc
 secrets.yml
 
-.cfignore

@@ -20,7 +20,7 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #fff;  // changed from #000 as it was overriding gov.uk style
 
   &:visited {
     color: #666;

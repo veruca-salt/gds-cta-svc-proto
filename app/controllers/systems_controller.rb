@@ -16,10 +16,12 @@ class SystemsController < ApplicationController
   # GET /systems/new
   def new
     @system = System.new
+    @system.system_departments.build
   end
 
   # GET /systems/1/edit
   def edit
+    @system.system_departments.build
   end
 
   # POST /systems
@@ -29,6 +31,11 @@ class SystemsController < ApplicationController
 
     respond_to do |format|
       if @system.save
+
+        # if department or system links exist then create the respective links using the returned new system id
+        # remove all first and rebuild
+
+
         format.html { redirect_to @system, notice: 'System was successfully created.' }
         format.json { render :show, status: :created, location: @system }
       else
@@ -75,7 +82,7 @@ class SystemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def system_params
-      params.require(:system).permit(:acronymn, :name, :description, :importance)
+      params.require(:system).permit(:acronymn, :name, :description, :importance, system_departments_attributes: [:system_id, :department_id])
     end
 
   def authenticate_user!

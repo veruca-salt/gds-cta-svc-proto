@@ -20,9 +20,9 @@
         <td><%= system.name %></td>
         <td><%= system.description %></td>
         <td><%= system.importance %></td>
-        <td><%= link_to 'Show', system %></td>
-        <td><%= link_to 'Edit', edit_system_path(system) %></td>
-        <td><%= link_to 'Destroy', system, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', system, class: 'govuk-link govuk-link--no-visited-state' %></td>
+        <td><%= link_to 'Edit', edit_system_path(system), class: 'govuk-link govuk-link--no-visited-state' %></td>
+        <td><%= link_to 'Destroy', system, method: :delete, data: { confirm: 'Are you sure?' }, class: 'govuk-link govuk-link--no-visited-state' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,6 +30,6 @@
 
 <br>
 
-<%= link_to 'New System', new_system_path %>
+<%= link_to 'New System', new_system_path, class: 'govuk-button' %>
 <br>
-<%= link_to 'Return to dashboard', root_path %>
+<%= link_to 'Return to dashboard', root_path, class: 'govuk-link govuk-link--no-visited-state' %>

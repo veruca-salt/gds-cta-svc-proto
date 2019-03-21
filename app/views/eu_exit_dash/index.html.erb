@@ -1,6 +1,6 @@
+<p id="notice"><%= notice %></p>
+<br>
 <h1 class="govuk-heading-xl">EU Exit Dashboard</h1>
-<h2>v0.01</h2>
-
 
 
 <%= form_with url: "/get_systems_by_dept", method: "get", remote: true do |form| %>
@@ -8,45 +8,49 @@
      <%= form.label :department_id, class: "govuk-label" %>
      <%= form.collection_select(:department_id, Department.order(:name), :id, :name, {prompt: "Select a department"}, {class: "govuk-select"}) %>
   </div>
-
-
-
- <div class="field">
-    <%= form.label :system_id, :class => "govuk-label" %>
-    <%= form.collection_select(:system_id, SystemDepartment.order(:system_id), :system_id, :id, {prompt: "Select a System"}, {class: "govuk-select"}) %>
-  </div>
-
-
-<%= button_to "Impacted Systems", '/impact', class: 'govuk-button', :method => :post %>
-
-
 <% end %>
+
+<%= form_with url: "/impact", method: "get", remote: true do |form2| %>
+ <div class="field">
+    <%= form2.label :system_id, :class => "govuk-label" %>
+    <%= form2.collection_select(:system_id, SystemDepartment.order(:system_id), :system_id, :id, {prompt: "Select a System"}, {class: "govuk-select"}) %>
+  </div>
+<% end %>
+
+<br> 
 
 <hr>
 
 <div>
 
-<table class="govuk-table">
-	<thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th class="govuk-table__header">Linked Systems</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <% @system_links.each do |system_link| %>
-      <% next if system_link.weight > 1 %>
-      <tr class="govuk-table__row">
-        <td class="govuk-table__header"><%= system_link.system_b.acronymn %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<br> 
+    <h3 class="govuk-heading-m">Linked Systems</h3> 
+    <table class="govuk-table" id="linked_sys_tbl">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header">First degree connections</th>
+          <th class="govuk-table__header">Second</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body"></tbody>
+    </table>
 
 </div>
 
+<!--
+<br> 
 
+<hr>
 
+<div>
+  Visualised Impact
+
+   insert graph  
+</div>
+
+-->
 
 <br>
-<%= link_to 'Return to dashboard', root_path %>
+<%= link_to 'Return to dashboard', root_path, class: 'govuk-link govuk-link--no-visited-state' %>

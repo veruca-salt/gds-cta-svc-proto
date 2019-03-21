@@ -13,6 +13,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-Rails.application.config.assets.precompile += %w( govuk-frontend-2.6.0.min.css )
 Rails.application.config.assets.precompile += %w( govuk-frontend-ie8-2.6.0.min.css )
+Rails.application.config.assets.precompile += %w( govuk-frontend-2.6.0.min.css )
 Rails.application.config.assets.precompile += %w( govuk-frontend-2.6.0.min.js )

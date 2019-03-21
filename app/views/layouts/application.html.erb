@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>CTA System Analytics</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="blue" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,27 +27,26 @@
     <!--<![endif]-->
 
     <!--[if IE 8]>
-      <%= stylesheet_link_tag "govuk-frontend-ie8-2.6.0.min" %>
+      <%= stylesheet_link_tag "govuk-frontend-ie8-2.6.0.min", media: "all" %>
     <![endif]-->
 
   <meta property="og:image" content="../assets/images/govuk-opengraph-image.png">
 
   </head>
 
-  <!-- header -->
-  <body style="margin: 0px">
+  <!-- header  style="margin: 0px" -->
+  <body class="govuk-template__body app-body-class">
 
-     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+<script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+</script>
 
-      <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+    <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
     
     <header class="govuk-header " role="banner" data-module="header">
       <div class="govuk-header__container govuk-width-container">
-
         <div class="govuk-header__logo">
           <a href="/" class="govuk-header__link govuk-header__link--homepage">
-            <span class="govuk-header__logotype">
-              
+            <span class="govuk-header__logotype">   
               <svg
                 role="presentation"
                 focusable="false"
@@ -72,7 +71,6 @@
         </div>
 
       <div class="govuk-header__content">
-
           <a href="#" class="govuk-header__link govuk-header__link--service-name">
             CTA System Analytics
           </a>
@@ -81,14 +79,10 @@
           <nav>
             <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
               <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
-                <a class="govuk-header__link">
-                  <%= link_to 'Departmental Systems Dashboard', root_path %>
-                </a>
+                 <%= link_to 'Departmental Systems Dashboard', root_path, class: 'govuk-header__link' %> 
               </li>
               <li class="govuk-header__navigation-item">
-                <a class="govuk-header__link">
-                  <%= link_to 'EU Exit Dashboard', controller: 'eu_exit_dash' %>
-                </a>
+                 <%= link_to 'EU Exit Dashboard', controller: 'eu_exit_dash', class: 'govuk-header__link'  %> 
               </li>
             </ul>
           </nav>
@@ -96,19 +90,20 @@
       </div>
     </header>
 
-    <div class="govuk-phase-banner">
-      <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
-      alpha
-    </strong>
-    <span class="govuk-phase-banner__text">
-          This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
-        </span>
-      </p>
-    </div>
+    <div class="govuk-width-container">
+      <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
+        beta
+      </strong>
+      <span class="govuk-phase-banner__text">
+            This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+          </span>
+        </p>
+      </div>
 
     <!-- body -->
-     <div class="govuk-width-container">
-        <main class="govuk-main-wrapper " id="main-content" role="main">
+     
+        <main class="govuk-main-wrapper app-main-class " id="main-content" role="main">
 
             <% if ! current_user %>
               <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
@@ -120,7 +115,7 @@
           <% end %> 
           </p>
 
-          <% if flash[:notice] %><%=flash[:notice]%><% end %>
+          <!-- <% if flash[:notice] %><%=flash[:notice]%><% end %> -->
 
           <%= yield %>
 
@@ -172,6 +167,9 @@
       </div>
     </div>
   </footer>
+
+  <%= javascript_include_tag "govuk-frontend-2.6.0.min.js" %>
+  <script>window.GOVUKFrontend.initAll()</script>
 
   </body>
 </html>

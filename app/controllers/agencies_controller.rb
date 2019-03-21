@@ -22,6 +22,31 @@ class AgenciesController < ApplicationController
   def edit
   end
 
+  # GET /agencies/add/:agency_name
+  def add
+    agency_find_results = Agency.where("name = ?", params[:agency_name])
+
+    # agency exists, just return 
+    if agency_find_results.exists?
+      respond_to do |format|
+        format.json { render json: agency_find_results }
+      end
+    else
+     # add new program to the db and then return the new program
+     new_agency = Agency.create(name: params[:agency_name])
+       if new_agency.save  
+         # Need to select values to return otherwise returns undefined
+         agency_list = []
+         agency_info = new_agency.attributes
+         agency_list << agency_info 
+         respond_to do |format|
+            format.json { render json: agency_list }
+         end
+       end
+    end
+  end
+
+
   # POST /agencies
   # POST /agencies.json
   def create
@@ -70,7 +95,7 @@ class AgenciesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def agency_params
-      params.require(:agency).permit(:name)
+      params.require(:agency).permit(:name, :agency_name)
     end
 
   def authenticate_user!

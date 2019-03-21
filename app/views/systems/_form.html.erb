@@ -12,26 +12,81 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :acronymn %>
-    <%= form.text_field :acronymn %>
+    <%= form.label :acronymn, class: "govuk-label" %>
+    <%= form.text_field :acronymn, class: "govuk-input govuk-input--width-5" %>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class: "govuk-label" %>
+    <%= form.text_field :name, class: "govuk-input govuk-input--width-20" %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.label :description, class: "govuk-label" %>
+    <%= form.text_field :description, class: "govuk-input govuk-input--width-20" %>
   </div>
 
-  <div class="field">
-    <%= form.label :importance %>
-    <%= form.number_field :importance, disabled: true %>
+  <div class="field" style="display:none">
+    <%= form.label :importance, class: "govuk-label" %>
+    <%= form.number_field :importance, disabled: true, style: "border:none", class: "govuk-input govuk-input--width-2" %>
   </div>
+<!--
+  <div class="field">
+    <%= form.label :department_id, class: "govuk-label" %>
+     <%= form.collection_select(:department_id, Department.all, :id, :name, {prompt: "Select a department"}, {class: "govuk-select"}) %>
+  </div>
+
+
+<br> 
+
+<hr>
+
+<br>
+
+<div>
+
+    
+
+    <table class="govuk-table" id="linked_sys_tbl">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header">Linked System</th>
+          <th class="govuk-table__header">Protocol</th>
+          <th class="govuk-table__header"></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__header"><%= form.collection_select(:system_b_id, System.all, :id, :acronymn, {prompt: "Select a system"}, {class: "govuk-select"}) %></td>
+          <td class="govuk-table__header"><%= form.collection_select(:protocol, Protocol.all, :name, :name, {prompt: "Select a protocol"}, {class: "govuk-select"}) %></td>
+          <td class="govuk-table__header">destroy link</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+    <tr>
+      <td><input type="button" id="add_new_system" class="govuk-button" value="Add System"></td>
+      <td></td><td></td>
+    </tr>
+  </tfoot>
+    </table>
+
+</div>
+  
+<br> 
+
+<hr>
+
+<br>  -->
+
+<div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "govuk-button" %>
   </div>
 <% end %>
+
+
+

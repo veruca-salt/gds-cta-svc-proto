@@ -6,16 +6,27 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'login/new', as: 'login'
 
-  # route to get systems by department
-  get 'get_systems_by_dept/:department_id', to: 'eu_exit_dash#get_systems_by_dept'  
+  # get systems by department
+  get 'get_systems_by_dept/:department_id', to: 'eu_exit_dash#get_systems_by_dept' 
+
+  # get impacted systems
+  get 'impact/:system_id', to: 'eu_exit_dash#impact'    
 
   # run create links function
   get '/create/links', to: 'system_link#generate_links'
   
   resources :sessions, only: [:create, :destroy]
   resources :protocols
-  resources :agencies
-  resources :programs
+  resources :agencies do
+    collection do
+        get 'add/:agency_name', to: 'agencies#add'
+    end
+  end
+  resources :programs do
+    collection do
+        get 'add/:program_name', to: 'programs#add'
+    end
+  end
   resources :services
   resources :system_links
   resources :system_departments

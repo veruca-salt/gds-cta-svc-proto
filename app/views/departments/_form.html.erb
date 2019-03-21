@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "govuk-input govuk-input--width-20" %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "govuk-textarea" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "govuk-button" %>
   </div>
 <% end %>
