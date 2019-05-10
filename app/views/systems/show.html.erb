@@ -15,6 +15,17 @@
   <%= @system.description %>
 </p>
 
+<p>
+  <strong>Department:</strong>
+  <%= @dept_name %>
+</p>
+
+<p>
+  <strong>Linked Systems:</strong>
+  <%= @syslinks %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_system_path(@system) %> |
 <%= link_to 'Back', systems_path %>

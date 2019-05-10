@@ -28,7 +28,11 @@ Rails.application.routes.draw do
     end
   end
   resources :services
-  resources :system_links
+  resources :system_links do
+    collection do
+        get 'remove/:id', to: 'system_links#remove'
+    end
+  end
   resources :system_departments
   resources :systems
   resources :departments

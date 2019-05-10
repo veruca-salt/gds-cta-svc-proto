@@ -63,6 +63,14 @@ class SystemLinksController < ApplicationController
     end
   end
 
+  # REMOVE /system_links/1
+  # REMOVE /system_links/1.json
+  def remove
+    # remove the system link by id
+    @system_link = SystemLink.where("id=?", params[:id])&.destroy_all
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_system_link
@@ -71,7 +79,7 @@ class SystemLinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def system_link_params
-      params.require(:system_link).permit(:system_a_id, :system_b_id, :protocol, :weight)
+      params.require(:system_link).permit(:id, :system_a_id, :system_b_id, :protocol, :weight, :systems_attributes => {})
     end
 
     def authenticate_user!

@@ -11,6 +11,7 @@ class SystemDepartmentsController < ApplicationController
   # GET /system_departments/1
   # GET /system_departments/1.json
   def show
+    
   end
 
   # GET /system_departments/new

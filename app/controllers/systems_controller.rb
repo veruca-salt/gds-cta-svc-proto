@@ -11,24 +11,39 @@ class SystemsController < ApplicationController
   # GET /systems/1
   # GET /systems/1.json
   def show
+    # get department name
+    SystemDepartment.where("system_id=?", params[:id]).each do | deptid |
+      Department.where("id=?", deptid.department_id).each do | dept |
+        @dept_name = dept.name    #get the department name for display
+      end
+    end
+
+    # get list of linked systems
+    linked_systems = []
+    SystemLink.select("system_b_id").where(["system_a_id = ? AND weight=1", params[:id]]).each do | links |
+      System.where("id=?", links.system_b_id).each do | sys |
+        linked_systems << sys.name
+      end
+    end
+    @syslinks = linked_systems
+    
   end
 
   # GET /systems/new
   def new
     @system = System.new
     @system.system_departments.build
+    @system.system_links.build
   end
 
   # GET /systems/1/edit
   def edit
-    @system.system_departments.build
   end
 
   # POST /systems
   # POST /systems.json
   def create
     @system = System.new(system_params)
-
     respond_to do |format|
       if @system.save
 
@@ -82,7 +97,7 @@ class SystemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def system_params
-      params.require(:system).permit(:acronymn, :name, :description, :importance, system_departments_attributes: [:system_id, :department_id])
+      params.require(:system).permit(:id, :acronymn, :name, :description, :importance, system_departments_attributes: [:id, :system_id, :department_id], :system_links_attributes => {})
     end
 
   def authenticate_user!

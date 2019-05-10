@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :system_id %>
-    <%= form.collection_select(:system_id, System.all, :id, :acronymn) %>
+    <%= form.label :system_id, class: "govuk-label" %>
+    <%= form.collection_select(:system_id, System.all, :id, :acronymn, {}, {class: "govuk-select"}) %>
   </div>
 
   <div class="field">
-    <%= form.label :department_id %>
-     <%= form.collection_select(:department_id, Department.all, :id, :name) %>
+    <%= form.label :department_id, class: "govuk-label" %>
+     <%= form.collection_select(:department_id, Department.all, :id, :name, {}, {class: "govuk-select"}) %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "govuk-button"  %>
   </div>
 <% end %>

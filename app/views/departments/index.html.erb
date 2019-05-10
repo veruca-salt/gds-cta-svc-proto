@@ -16,7 +16,6 @@
       <tr>
         <td><%= department.name %></td>
         <td><%= department.description %></td>
-        <td><%= link_to 'Show', department, class: 'govuk-link govuk-link--no-visited-state' %></td>
         <td><%= link_to 'Edit', edit_department_path(department), class: 'govuk-link govuk-link--no-visited-state' %></td>
         <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' }, class: 'govuk-link govuk-link--no-visited-state' %></td>
       </tr>

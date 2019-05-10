@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :system_a_id %>
-    <%= form.collection_select(:system_a_id, System.all, :id, :acronymn) %>
+    <%= form.label :system_a_id, class: "govuk-label" %>
+    <%= form.collection_select(:system_a_id, System.all, :id, :acronymn, {}, {class: "govuk-select"}) %>
   </div>
 
   <div class="field">
-    <%= form.label :system_b_id %>
-    <%= form.collection_select(:system_b_id, System.all, :id, :acronymn) %>
+    <%= form.label :system_b_id, class: "govuk-label" %>
+    <%= form.collection_select(:system_b_id, System.all, :id, :acronymn, {}, {class: "govuk-select"}) %>
   </div>
 
   <div class="field">
-    <%= form.label :protocol %>
-    <%= form.collection_select(:protocol, Protocol.all, :name, :name) %>
+    <%= form.label :protocol, class: "govuk-label" %>
+    <%= form.collection_select(:protocol, Protocol.all, :name, :name, {}, {class: "govuk-select"}) %>
   </div>
 
   <div class="field" style="display:none">
-    <%= form.label :weight %>
+    <%= form.label :weight, class: "govuk-label" %>
     <%= form.number_field :weight, disabled: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "govuk-button" %>
   </div>
 <% end %>

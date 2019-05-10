@@ -14,7 +14,6 @@
     <% @agencies.each do |agency| %>
       <tr>
         <td><%= agency.name %></td>
-        <td><%= link_to 'Show', agency, class: 'govuk-link govuk-link--no-visited-state' %></td>
         <td><%= link_to 'Edit', edit_agency_path(agency), class: 'govuk-link govuk-link--no-visited-state' %></td>
         <td><%= link_to 'Destroy', agency, method: :delete, data: { confirm: 'Are you sure?' }, class: 'govuk-link govuk-link--no-visited-state' %></td>
       </tr>

@@ -1,0 +1,11 @@
+<% content_for :headcss do %>
+	  <!-- add govuk frontend from dist instead of npm -->
+    <!--[if !IE 8]><!-->
+    <%= stylesheet_link_tag "govuk-frontend-2.6.0.min", media: "all" %>
+    <!--<![endif]-->
+
+    <!--[if IE 8]>
+      <%= stylesheet_link_tag "govuk-frontend-ie8-2.6.0.min", media: "all" %>
+    <![endif]--> 
+<% end %>
+ 

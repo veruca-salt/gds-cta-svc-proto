@@ -16,7 +16,6 @@
       <tr>
         <td><%= system_department.system.acronymn %> - <%= system_department.system.name %></td>
         <td><%= system_department.department.name %></td>
-        <td><%= link_to 'Show', system_department %></td>
         <td><%= link_to 'Edit', edit_system_department_path(system_department) %></td>
         <td><%= link_to 'Destroy', system_department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -26,6 +25,4 @@
 
 <br>
 
-<%= link_to 'New System Department', new_system_department_path %>
-<br>
 <%= link_to 'Return to dashboard', root_path %>

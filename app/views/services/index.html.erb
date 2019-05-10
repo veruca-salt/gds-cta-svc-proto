@@ -7,8 +7,8 @@
     <tr>
       <th>Name</th>
       <th>Department</th>
-      <th>Program</th>
-      <th>Agency</th>
+      <th style="display:none">Program</th>
+      <th style="display:none">Agency</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,8 +18,8 @@
       <tr>
         <td><%= service.name %></td>
         <td><%= service.department.description %></td>
-        <td><%= service&.program&.name %></td>
-        <td><%= service&.agency&.name %></td>
+        <td style="display:none"><%= service&.program&.name %></td>
+        <td style="display:none"><%= service&.agency&.name %></td>
         <td><%= link_to 'Show', service, class: 'govuk-link govuk-link--no-visited-state' %></td>
         <td><%= link_to 'Edit', edit_service_path(service), class: 'govuk-link govuk-link--no-visited-state' %></td>
         <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }, class: 'govuk-link govuk-link--no-visited-state' %></td>

@@ -21,7 +21,6 @@
         <td><%= system_link.system_b.acronymn %></td>
         <td><%= system_link.protocol %></td>
         <td style="display:none"><%= system_link.weight %></td>
-        <td><%= link_to 'Show', system_link %></td>
         <td><%= link_to 'Edit', edit_system_link_path(system_link) %></td>
         <td><%= link_to 'Destroy', system_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -31,6 +30,5 @@
 
 <br>
 
-<%= link_to 'New System Link', new_system_link_path %>
-<br>
+
 <%= link_to 'Return to dashboard', root_path %>

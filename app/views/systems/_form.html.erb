@@ -30,24 +30,21 @@
     <%= form.label :importance, class: "govuk-label" %>
     <%= form.number_field :importance, disabled: true, style: "border:none", class: "govuk-input govuk-input--width-2" %>
   </div>
-<!--
+
+
+  <%= form.fields_for :system_departments do | sysdept | %>
   <div class="field">
-    <%= form.label :department_id, class: "govuk-label" %>
-     <%= form.collection_select(:department_id, Department.all, :id, :name, {prompt: "Select a department"}, {class: "govuk-select"}) %>
+    <%= sysdept.label :department_id, class: "govuk-label" %>
+     <%= sysdept.collection_select(:department_id, Department.all, :id, :name, {prompt: "Select a department"}, {class: "govuk-select"}) %>
   </div>
+  <% end %> 
 
+  <br>
 
-<br> 
+ 
 
-<hr>
-
-<br>
-
-<div>
-
-    
-
-    <table class="govuk-table" id="linked_sys_tbl">
+ 
+   <table class="govuk-table" id="linked_sys_tbl">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th class="govuk-table__header">Linked System</th>
@@ -58,13 +55,25 @@
       </thead>
 
       <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <td class="govuk-table__header"><%= form.collection_select(:system_b_id, System.all, :id, :acronymn, {prompt: "Select a system"}, {class: "govuk-select"}) %></td>
-          <td class="govuk-table__header"><%= form.collection_select(:protocol, Protocol.all, :name, :name, {prompt: "Select a protocol"}, {class: "govuk-select"}) %></td>
-          <td class="govuk-table__header">destroy link</td>
-        </tr>
-      </tbody>
 
+<%= form.fields_for :system_links do | syslink | %>
+
+          
+
+        <tr class="govuk-table__row">
+          <td style="display:none">
+            <%= syslink.text_field :system_a_id %>
+            <%= syslink.text_field :id, class: "this_id" %>
+          </td>
+
+          <td class="govuk-table__header"><%= syslink.collection_select(:system_b_id, System.all, :id, :acronymn, {:include_blank=> "Select a system"}, {class: "govuk-select selectValid"}) %></td>
+          <td class="govuk-table__header"><%= syslink.collection_select(:protocol, Protocol.all, :name, :name, {:include_blank=> "Select a protocol"}, {class: "govuk-select"}) %></td>
+          <td class="govuk-table__header"><inpt type="button" id="destroy_link" class="govuk-link govuk-link--no-visited-state remove_link">destroy link</input></td>
+        </tr>
+
+<% end %>
+
+      </tbody>
       <tfoot>
     <tr>
       <td><input type="button" id="add_new_system" class="govuk-button" value="Add System"></td>
@@ -73,13 +82,7 @@
   </tfoot>
     </table>
 
-</div>
-  
-<br> 
 
-<hr>
-
-<br>  -->
 
 <div>
 

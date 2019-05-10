@@ -7,9 +7,11 @@
     <tr>
       <th>Acronymn</th>
       <th>Name</th>
-      <th>Description</th>
-      <th>Importance</th>
-      <th colspan="3"></th>
+      <th style="display:none">Description</th>
+      <th style="display:none">Importance</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,8 +20,8 @@
       <tr>
         <td><%= system.acronymn %></td>
         <td><%= system.name %></td>
-        <td><%= system.description %></td>
-        <td><%= system.importance %></td>
+        <td style="display:none"><%= system.description %></td>
+        <td style="display:none"><%= system.importance %></td>
         <td><%= link_to 'Show', system, class: 'govuk-link govuk-link--no-visited-state' %></td>
         <td><%= link_to 'Edit', edit_system_path(system), class: 'govuk-link govuk-link--no-visited-state' %></td>
         <td><%= link_to 'Destroy', system, method: :delete, data: { confirm: 'Are you sure?' }, class: 'govuk-link govuk-link--no-visited-state' %></td>

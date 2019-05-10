@@ -21,16 +21,13 @@
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
 
-  <!-- add govuk frontend from dist instead of npm -->
-    <!--[if !IE 8]><!-->
-    <%= stylesheet_link_tag "govuk-frontend-2.6.0.min", media: "all" %>
-    <!--<![endif]-->
-
-    <!--[if IE 8]>
-      <%= stylesheet_link_tag "govuk-frontend-ie8-2.6.0.min", media: "all" %>
-    <![endif]-->
+      <%= render 'layouts/headcss' %>
+      <%= yield :headcss %>
+  
 
   <meta property="og:image" content="../assets/images/govuk-opengraph-image.png">
+
+  
 
   </head>
 
@@ -81,7 +78,7 @@
               <li class="govuk-header__navigation-item govuk-header__navigation-item--active">
                  <%= link_to 'Departmental Systems Dashboard', root_path, class: 'govuk-header__link' %> 
               </li>
-              <li class="govuk-header__navigation-item" style="color:white;">
+              <li class="govuk-header__navigation-item">
                  <%= link_to 'EU Exit Dashboard', controller: 'eu_exit_dash', class: 'govuk-header__link'  %> 
               </li>
             </ul>

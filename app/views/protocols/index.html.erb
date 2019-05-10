@@ -14,7 +14,6 @@
     <% @protocols.each do |protocol| %>
       <tr>
         <td><%= protocol.name %></td>
-        <td><%= link_to 'Show', protocol %></td>
         <td><%= link_to 'Edit', edit_protocol_path(protocol) %></td>
         <td><%= link_to 'Destroy', protocol, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -24,6 +23,6 @@
 
 <br>
 
-<%= link_to 'New Protocol', new_protocol_path %>
+<%= link_to 'New Protocol', new_protocol_path, class: 'govuk-button' %>
 <br>
-<%= link_to 'Return to dashboard', root_path %>
+<%= link_to 'Return to dashboard', root_path, class: 'govuk-link govuk-link--no-visited-state' %>
